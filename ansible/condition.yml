@@ -1,0 +1,14 @@
+--- #checking for condition statement if it is working or not in this ansible.
+
+- hosts: host
+  connection: ssh
+  become: yes
+  tasks: 
+     - name: creating file in debain
+       command: touch debain > /home/ubuntu
+       when: ansible_os_family == "Debian"
+
+     - name: creatinf file in redhat
+       command: touch redhat > /home/ubuntu
+       when: ansible_os_family == "RedHat"
+

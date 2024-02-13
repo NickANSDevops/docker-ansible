@@ -1,0 +1,6 @@
+--- # this is just a  practice 
+
+- hosts: host
+  become: yes
+  connection: ssh
+  gather_facts: yes

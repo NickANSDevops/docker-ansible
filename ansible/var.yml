@@ -1,0 +1,11 @@
+--- # checking how variables work on ansible
+
+- hosts: host
+  connection: ssh
+  become: yes
+  vars: 
+    - name: nginx
+  tasks: 
+    - name: stopping nginx server on client side
+      action: service name='{{name}}' state=stopped
+

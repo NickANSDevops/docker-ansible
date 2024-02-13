@@ -1,0 +1,14 @@
+--- # checking for notify if it is working fine or not 
+
+- hosts: host
+  connection: ssh
+  become: yes
+  vars: 
+   - pkgname: nginx
+  tasks: 
+   - name: is to start nginx
+     action: service name='{{pkgname}}' state=started
+     notify: restart nginx
+  handlers: 
+   - name: restart nginx
+     action: service name='{{pkgname}}' state=restarted

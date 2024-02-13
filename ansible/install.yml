@@ -1,0 +1,9 @@
+--- # checking installing for first time usung ansible.
+
+- hosts: host
+  connection: ssh
+  become: yes
+  tasks: 
+     - name: installling apache2
+       action: apt name=apache2 state=present 
+

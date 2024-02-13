@@ -1,0 +1,18 @@
+--- # checking loop is working on ansible with handlers or not 
+
+- hosts: host
+  connection: ssh
+  become: yes
+  vars: 
+       username: zxy
+  tasks: 
+     - name: creating multiple user
+       action: user name='{{item}}' state=present
+       with_items: 
+          - xyz
+          - yzx
+          - zxy
+       notify: new user
+  handlers: 
+     - name: new user
+       action: user name='{{username}}' state=absent
